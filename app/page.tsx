@@ -150,7 +150,61 @@ const more = articles.slice(7, 20);
               </article>
             </section>
           </div>
+<section style={{
+  maxWidth: "1200px",
+  margin: "60px auto",
+  padding: "0 20px"
+}}>
+  <h3 style={{
+    fontFamily: "Georgia, serif",
+    fontSize: "18px",
+    marginBottom: "20px",
+    borderBottom: "1px solid #ddd",
+    paddingBottom: "10px"
+  }}>
+    More Stories
+  </h3>
 
+  <div style={{
+    display: "grid",
+    gridTemplateColumns: "repeat(4, 1fr)",
+    gap: "24px"
+  }}>
+    {more.map((article) => (
+      <a key={article.title} href={article.url} target="_blank" style={{
+        textDecoration: "none",
+        color: "inherit"
+      }}>
+        <img
+          src={article.image}
+          alt={article.title}
+          style={{
+            width: "100%",
+            height: "140px",
+            objectFit: "cover",
+            marginBottom: "10px"
+          }}
+        />
+
+        <h4 style={{
+          fontSize: "14px",
+          lineHeight: "1.4",
+          fontWeight: 600
+        }}>
+          {article.title}
+        </h4>
+
+        <p style={{
+          fontSize: "12px",
+          color: "#777",
+          marginTop: "6px"
+        }}>
+          {article.source}
+        </p>
+      </a>
+    ))}
+  </div>
+</section>
           <aside className="right-rail">
             <section className="most-read">
               <h3 className="section-label">Most Read</h3>
