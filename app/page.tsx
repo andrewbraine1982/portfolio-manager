@@ -219,13 +219,7 @@ style={{
           {article.title}
         </h4>
 
-        <p style={{
-          fontSize: "12px",
-          color: "#777",
-          marginTop: "6px"
-        }}>
-          {article.source}
-        </p>
+   
       </a>
     ))}
   </div>
