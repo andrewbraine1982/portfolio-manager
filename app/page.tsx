@@ -168,7 +168,7 @@ const more = articles.slice(7, 20);
   <div style={{
     display: "flex",
    flexDirection: "column",
-   gap: "18px"
+  gap: "10px"
   }}>
     {more.map((article) => (
       <a key={article.title} href={article.url} target="_blank" style={{
