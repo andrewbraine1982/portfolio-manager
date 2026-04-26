@@ -166,24 +166,36 @@ const more = articles.slice(7, 20);
   </h3>
 
   <div style={{
-    display: "grid",
-   gridTemplateColumns: "repeat(2, 1fr)",
-    gap: "24px"
+    display: "flex",
+   flexDirection: "column",
+   gap: "18px"
   }}>
     {more.map((article) => (
       <a key={article.title} href={article.url} target="_blank" style={{
-        textDecoration: "none",
-        color: "inherit"
+    display: "flex",
+       gap: "12px",
+alignItems: "flex-start",
+textDecoration: "none",
+color: "inherit"
       }}>
         <img
-          src={article.image}
-          alt={article.title}
-          style={{
-            width: "100%",
-            height: "140px",
-            objectFit: "cover",
-            marginBottom: "10px"
-          }}
+  src={article.image}
+  alt={article.title}
+  style={{
+    width: "110px",
+    height: "75px",
+    objectFit: "cover",
+    flexShrink: 0
+  }}
+/>
+         
+        
+        
+       
+           
+           
+            
+          
         />
 
         <h4 style={{
