@@ -60,7 +60,7 @@ export async function GET() {
         keywords.some((word) => text.includes(word))
       );
     })
-    .slice(0, 12)
+    .slice(0, 24)
   .map((item: any) => {
   const title = item.headline || "";
   const text = title.toLowerCase();
