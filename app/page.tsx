@@ -210,7 +210,7 @@ export default function Home() {
             transform: translateX(-50%);
           }
         }
-    }</style>
+  }</style>
 <footer style={{
   marginTop: "60px",
   padding: "50px 20px",
