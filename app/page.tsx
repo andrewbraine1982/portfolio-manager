@@ -218,7 +218,7 @@ export default function Home() {
   background: "#faf9f7",
   fontSize: "13px",
   color: "#555"
-}>
+}}>
 
   <div style={{
     maxWidth: "1200px",
