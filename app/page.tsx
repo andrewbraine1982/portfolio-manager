@@ -117,7 +117,7 @@ const more = articles.slice(7, 20);
               <div className="lead-copy">
                 <p className="kicker">Top Story</p>
                 <h2>{lead.title}</h2>
-                <p className="summary">{lead.summary}</p>
+                
                 <p className="byline">{lead.source || "Financial News"}</p>
               </div>
             </article>
