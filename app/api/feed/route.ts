@@ -18,28 +18,27 @@ const keywords = [
   "forex",
 ];
 function getFallbackImage(text: string) {
-  if (text.includes("oil") || text.includes("energy")) {
-    return "https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?q=80&w=1200";
+  const fallbackImages = [
+    "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1642790551116-18e150f248e1?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?auto=format&fit=crop&w=1200&q=80"
+  ];
+
+  let hash = 0;
+
+  for (let i = 0; i < text.length; i++) {
+    hash = text.charCodeAt(i) + ((hash << 5) - hash);
   }
 
-  if (text.includes("bitcoin") || text.includes("crypto")) {
-    return "https://images.unsplash.com/photo-1621761191319-c6fb62004040?q=80&w=1200";
-  }
+  const index = Math.abs(hash) % fallbackImages.length;
 
-  if (text.includes("stock") || text.includes("s&p") || text.includes("dow")) {
-    return "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1200";
-  }
-
-  if (text.includes("fed") || text.includes("rates") || text.includes("bank")) {
-    return "https://images.unsplash.com/photo-1601597111158-2fceff292cdc?q=80&w=1200";
-  }
-
-  if (text.includes("china") || text.includes("trade")) {
-    return "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1200";
-  }
-
-  return "https://images.unsplash.com/photo-1559526324-593bc073d938?q=80&w=1200";
+  return fallbackImages[index];
 }
+
+
 export async function GET() {
   const token = process.env.FINNHUB_API_KEY;
 
