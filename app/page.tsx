@@ -63,7 +63,8 @@ export default function Home() {
   }, []);
 
   const lead = articles[0] || fallbackArticles[0];
-  const latest = articles.slice(1, 7);
+ const latest = articles.slice(1, 7);
+const more = articles.slice(7, 20);
 
   return (
     <main className="site-shell">
