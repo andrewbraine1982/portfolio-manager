@@ -175,10 +175,14 @@ const more = articles.slice(7, 20);
   gap: "10px"
   }}>
     {more.map((article) => (
-      <a key={article.title} href={`/article?title=${encodeURIComponent(article.title)}&summary=${encodeURIComponent(article.summary || "")}&image=${encodeURIComponent(article.image || "")}&source=${encodeURIComponent(article.source || "")}`}
+<a
+  key={article.title}
+  href={`/article?title=${encodeURIComponent(article.title)}&summary=${encodeURIComponent(article.summary || "")}&image=${encodeURIComponent(article.image || "")}&source=${encodeURIComponent(article.source || "")}`}
+  style={{
     display: "flex",
-       gap: "12px",
-alignItems: "flex-start",
+    gap: "12px",
+    alignItems: "flex-start",
+    textDecoration: "none",     
 textDecoration: "none",
 color: "inherit"
       }}>
