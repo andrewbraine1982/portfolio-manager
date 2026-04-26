@@ -66,10 +66,15 @@ export async function GET() {
   const title = item.headline || "";
   const text = title.toLowerCase();
 
-  const image =
-    item.image && !item.image.includes("logo")
-      ? item.image
-      : getFallbackImage(text);
+  const isBadImage =
+  !item.image ||
+  !item.image.startsWith("http") ||
+  item.image.includes("logo") ||
+  item.image.includes("finnhub") ||
+  item.image.includes("static2") ||
+  item.image.includes("google.com/rss");
+
+const image = isBadImage ? getFallbackImage(text) : item.image;
 
   return {
     title,
