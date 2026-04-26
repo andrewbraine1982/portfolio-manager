@@ -127,7 +127,11 @@ const more = articles.slice(7, 20);
                 <h3 className="section-label">Latest Briefings</h3>
                 <div className="latest-list">
                   {latest.slice(0, 4).map((article) => (
-                    <a className="latest-item" key={article.title} href={article.url} target="_blank">
+                    <a
+  className="latest-item"
+  key={article.title}
+  href={`/article?title=${encodeURIComponent(article.title)}&summary=${encodeURIComponent(article.summary || "")}&image=${encodeURIComponent(article.image || "")}&source=${encodeURIComponent(article.source || "")}`}
+>
                       <img className="article-image" src={article.image} alt={article.title} />
                       <div>
                         <h4>{article.title}</h4>
@@ -171,7 +175,7 @@ const more = articles.slice(7, 20);
   gap: "10px"
   }}>
     {more.map((article) => (
-      <a key={article.title} href={article.url} target="_blank" style={{
+      <a key={article.title} href={`/article?title=${encodeURIComponent(article.title)}&summary=${encodeURIComponent(article.summary || "")}&image=${encodeURIComponent(article.image || "")}&source=${encodeURIComponent(article.source || "")}`}
     display: "flex",
        gap: "12px",
 alignItems: "flex-start",
