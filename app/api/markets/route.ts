@@ -30,4 +30,5 @@ export async function GET() {
     })
   );
 
-  return Response.json({ markets });
+ return Response.json({ markets });
+}
