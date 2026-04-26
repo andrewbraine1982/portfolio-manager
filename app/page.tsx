@@ -210,7 +210,84 @@ export default function Home() {
             transform: translateX(-50%);
           }
         }
-      `}</style>
+    }</style>
+<footer style={{
+  marginTop: "60px",
+  padding: "50px 20px",
+  borderTop: "1px solid #e5e5e5",
+  background: "#faf9f7",
+  fontSize: "13px",
+  color: "#555"
+}>
+
+  <div style={{
+    maxWidth: "1200px",
+    margin: "0 auto",
+    display: "grid",
+    gridTemplateColumns: "2fr 1fr 1fr 1fr",
+    gap: "40px"
+  }}>
+    
+    {/* LOGO + DESCRIPTION */}
+    <div>
+      <div style={{
+        width: "42px",
+        height: "42px",
+        border: "1px solid #111",
+        borderRadius: "50%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        fontFamily: "Georgia, serif",
+        fontSize: "18px",
+        fontWeight: 600,
+        color: "#111",
+        marginBottom: "12px"
+      }}>
+        PM
+      </div>
+
+      <div style={{ color: "#777", lineHeight: "1.6" }}>
+        Real-time markets, curated financial news, and actionable insights.
+      </div>
+    </div>
+
+    {/* MARKETS */}
+    <div>
+      <strong>Markets</strong>
+      <div>S&P 500</div>
+      <div>NASDAQ</div>
+      <div>Commodities</div>
+      <div>Crypto</div>
+    </div>
+
+    {/* NEWS */}
+    <div>
+      <strong>News</strong>
+      <div>Latest Briefings</div>
+      <div>Global Economy</div>
+      <div>Central Banks</div>
+    </div>
+
+    {/* COMPANY */}
+    <div>
+      <strong>Company</strong>
+      <div>About</div>
+      <div>Contact</div>
+      <div>Careers</div>
+    </div>
+
+  </div>
+
+  <div style={{
+    marginTop: "40px",
+    textAlign: "center",
+    fontSize: "12px",
+    color: "#888"
+  }}>
+    © {new Date().getFullYear()} Portfolio Manager
+  </div>
+</footer>
     </main>
   );
 }
