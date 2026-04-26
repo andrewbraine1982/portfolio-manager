@@ -181,7 +181,11 @@ color: "inherit"
       <img
   src={article.image}
   alt={article.title}
-  style={{
+  onError={(e) => {
+  e.currentTarget.src = "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80";
+}}
+
+style={{
     width: "110px",
     height: "75px",
     objectFit: "cover",
