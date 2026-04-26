@@ -1,5 +1,13 @@
 export const revalidate = 300;
 
+const financeTerms = [
+  "stock", "stocks", "market", "markets", "fed", "rates", "inflation",
+  "bond", "bonds", "treasury", "oil", "gold", "bitcoin", "crypto",
+  "earnings", "investors", "economy", "economic", "bank", "banks",
+  "dollar", "nasdaq", "dow", "s&p", "ftse", "shares", "equities",
+  "recession", "yield", "yields", "central bank", "ecb", "federal reserve"
+];
+
 export async function GET() {
   const token = process.env.FINNHUB_API_KEY;
 
@@ -11,7 +19,16 @@ export async function GET() {
   const data = await res.json();
 
   const articles = data
-    .filter((item: any) => item.headline && item.image && item.url)
+    .filter((item: any) => {
+      const text = `${item.headline || ""} ${item.summary || ""}`.toLowerCase();
+
+      return (
+        item.headline &&
+        item.image &&
+        item.url &&
+        financeTerms.some((term) => text.includes(term))
+      );
+    })
     .slice(0, 12)
     .map((item: any) => ({
       title: item.headline,
