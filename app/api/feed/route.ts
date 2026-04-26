@@ -50,16 +50,7 @@ export async function GET() {
   const data = await res.json();
 
   const articles = data
-    .filter((item: any) => {
-      const text = `${item.headline || ""} ${item.summary || ""}`.toLowerCase();
-
-      return (
-        item.headline &&
-    
-        item.url &&
-        keywords.some((word) => text.includes(word))
-      );
-    })
+.filter((item: any) => item.headline && item.url)
     .slice(0, 24)
   .map((item: any) => {
   const title = item.headline || "";
