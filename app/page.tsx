@@ -178,7 +178,7 @@ alignItems: "flex-start",
 textDecoration: "none",
 color: "inherit"
       }}>
-        <img
+      <img
   src={article.image}
   alt={article.title}
   style={{
@@ -188,6 +188,15 @@ color: "inherit"
     flexShrink: 0
   }}
 />
+ 
+ 
+ 
+   
+   
+    
+    
+ 
+
          
         
         
