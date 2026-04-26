@@ -56,7 +56,7 @@ export async function GET() {
 
       return (
         item.headline &&
-        item.image &&
+    
         item.url &&
         keywords.some((word) => text.includes(word))
       );
