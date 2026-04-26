@@ -183,7 +183,7 @@ const more = articles.slice(7, 20);
     gap: "12px",
     alignItems: "flex-start",
     textDecoration: "none",     
-textDecoration: "none",
+
 color: "inherit"
       }}>
       <img
