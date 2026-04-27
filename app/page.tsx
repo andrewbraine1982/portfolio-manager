@@ -8,6 +8,7 @@ type Article = {
   image?: string;
   source?: string;
   url?: string;
+  date?: string | null;
 };
 
 type Market = {
