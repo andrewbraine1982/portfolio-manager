@@ -146,7 +146,7 @@ const more = articles.slice(7, 20);
 <a
   className="latest-item"
   key={article.title}
- href={`/article?title=${encodeURIComponent(article.title)}&summary=${encodeURIComponent(article.summary || "")}&image=${encodeURIComponent(article.image || "")}&url=${encodeURIComponent(article.url || "")}&date=${encodeURIComponent(article.date || "")}`}
+ href={`/article/${slugify(article.title)}?title=${encodeURIComponent(article.title)}&summary=${encodeURIComponent(article.summary || "")}&source=${encodeURIComponent(article.source || "")}&image=${encodeURIComponent(article.image || "/fallback.jpg")}`}
 >
 <img className="article-image" src={article.image || "/fallback.jpg"} alt={article.title} onError={(e) => { e.currentTarget.src = "/fallback.jpg"; }} />
                       <div>
