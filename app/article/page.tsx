@@ -68,17 +68,24 @@ const date = searchParams.get("date");
             {summary}
           </p>
         )}
-     {url && (
-  <iframe
-    src={url}
+{url && (
+  <a
+    href={url}
+    target="_blank"
+    rel="noopener noreferrer"
     style={{
-      width: "100%",
-      height: "800px",
-      border: "none",
+      display: "inline-block",
       marginTop: "30px",
+      padding: "12px 18px",
+      border: "1px solid #111",
+      color: "#111",
+      textDecoration: "none",
+      fontWeight: 700,
     }}
-  />
-  )}
+  >
+    Read full story
+  </a>
+)}
 </article>
     </main>
   );
