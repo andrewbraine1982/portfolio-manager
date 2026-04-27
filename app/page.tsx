@@ -138,7 +138,7 @@ const more = articles.slice(7, 20);
   key={article.title}
   href={`/article?title=${encodeURIComponent(article.title)}&summary=${encodeURIComponent(article.summary || "")}&image=${encodeURIComponent(article.image || "")}&source=${encodeURIComponent(article.source || "")}`}
 >
-                     <img className="article-image" src={article.image} alt={article.title} onError={(e) => {
+<img className="article-image" src={article.image || "/fallback.jpg"} alt={article.title} onError={(e) => { e.currentTarget.src = "/fallback.jpg"; }} />
                       <div>
                         <h4>{article.title}</h4>
                         <p>{article.summary}</p>
