@@ -90,8 +90,8 @@ const date = searchParams.get("date");
   </p>
 
 </section>
-        )}
 {url && (
+
   <a
     href={url}
     target="_blank"
