@@ -112,22 +112,27 @@ const more = articles.slice(7, 20);
       <div className="container">
         <section className="hero-grid">
           <div>
-<article className="lead-story">
-<img
-  className="hero-image"
-  src={lead.image || "/fallback.jpg"}
-  alt={lead.title}
-  onError={(e) => {
-    e.currentTarget.src = "/fallback.jpg";
-  }}
-/>
-              <div className="lead-copy">
-                <p className="kicker">Top Story</p>
-                <h2>{lead.title}</h2>
-                
-                <p className="byline">{lead.source || "Financial News"}</p>
-              </div>
-            </article>
+<a
+  href={`/article?title=${encodeURIComponent(lead.title)}&summary=${encodeURIComponent(lead.summary || "")}&source=${encodeURIComponent(lead.source || "Financial News")}&image=${encodeURIComponent(lead.image || "/fallback.jpg")}`}
+  style={{ textDecoration: "none", color: "inherit" }}
+>
+  <article className="lead-story">
+    <img
+      className="hero-image"
+      src={lead.image || "/fallback.jpg"}
+      alt={lead.title}
+      onError={(e) => {
+        e.currentTarget.src = "/fallback.jpg";
+      }}
+    />
+
+    <div className="lead-copy">
+      <p className="kicker">Top Story</p>
+      <h2>{lead.title}</h2>
+      <p className="byline">{lead.source || "Financial News"}</p>
+    </div>
+  </article>
+</a>
 
             <section className="content-split">
               <div>
