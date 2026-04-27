@@ -16,6 +16,32 @@ function slugify(text: string) {
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
 }
+function makeSeoTitle(title: string) {
+  const lower = title.toLowerCase();
+
+  if (lower.includes("stock market")) {
+    return "What to watch in the stock market today";
+  }
+
+  if (lower.includes("hormuz")) {
+    return "Why shipping traffic through the Strait of Hormuz is low right now";
+  }
+
+  if (lower.includes("landlords") || lower.includes("apartments")) {
+    return "Why landlords are offering concessions right now";
+  }
+
+  if (lower.includes("fed") || lower.includes("interest rates")) {
+    return "What the latest Fed decision means for markets";
+  }
+
+  if (lower.includes("oil")) {
+    return "Why oil prices are moving today";
+  }
+
+  return title;
+}
+
 type Market = {
   symbol: string;
   price: number;
@@ -132,7 +158,7 @@ const more = articles.slice(7, 20);
 
     <div className="lead-copy">
       <p className="kicker">Top Story</p>
-      <h2>{lead.title}</h2>
+      <h2>{makeSeoTitle(lead.title)}</h2>
       <p className="byline">{lead.source || "Financial News"}</p>
     </div>
   </article>
@@ -150,7 +176,7 @@ const more = articles.slice(7, 20);
 >
 <img className="article-image" src={article.image || "/fallback.jpg"} alt={article.title} onError={(e) => { e.currentTarget.src = "/fallback.jpg"; }} />
                       <div>
-                        <h4>{article.title}</h4>
+      <h4>{makeSeoTitle(article.title)}</h4>
                         <p>{article.summary}</p>
                         <p className="byline">{article.source}</p>
                       </div>
@@ -171,10 +197,9 @@ const more = articles.slice(7, 20);
       />
     )}
 
-    <h4>
-      {latest[4]?.title ||
-        "Markets continue to digest global rate expectations"}
-    </h4>
+ <h4>
+  {makeSeoTitle(latest[4]?.title || "Markets continue to digest global rate expectations")}
+</h4>
 
     <p>
       {latest[4]?.summary ||
