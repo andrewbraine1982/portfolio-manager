@@ -51,7 +51,7 @@ export default function Home() {
         const newsData = await newsRes.json();
         const marketData = await marketRes.json();
 
-        if (newsData.articles?.length) setArticles(newsData.articles);
+setArticles(newsData.articles?.length ? newsData.articles : fallbackArticles);
         if (marketData.markets?.length) setMarkets(marketData.markets);
       } catch (err) {
         console.error("Live data failed", err);
