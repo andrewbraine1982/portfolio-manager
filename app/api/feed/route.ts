@@ -53,7 +53,8 @@ export async function GET() {
 .filter((item: any) => item.headline && item.url)
     .slice(0, 24)
   .map((item: any) => {
-  const title = item.headline || "";
+  const rawTitle = item.headline || "";
+const title = rawTitle.replace(/\s-\sReuters$/i, "").replace(/\s-\sCNBC$/i, "");
   const text = title.toLowerCase();
 
   const isBadImage =
@@ -66,13 +67,14 @@ export async function GET() {
 
 const image = isBadImage ? getFallbackImage(text) : item.image;
 
-  return {
-    title,
-    summary: item.summary,
-    image,
-    source: item.source,
-    url: item.url,
-  };
+return {
+  title,
+  summary: item.summary,
+  image,
+  source: item.source,
+  url: item.url,
+  date: item.datetime ? new Date(item.datetime * 1000).toISOString() : null,
+};
 });
 
   return Response.json({ articles });
