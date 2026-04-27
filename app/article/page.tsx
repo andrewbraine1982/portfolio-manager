@@ -93,9 +93,8 @@ const date = searchParams.get("date");
 {url && (
 
   <a
-    href={url}
-    target="_blank"
-    rel="noopener noreferrer"
+    href={`/`}
+    
     style={{
       display: "inline-block",
       marginTop: "30px",
