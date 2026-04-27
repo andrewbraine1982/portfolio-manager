@@ -10,7 +10,12 @@ type Article = {
   url?: string;
   date?: string | null;
 };
-
+function slugify(text: string) {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
 type Market = {
   symbol: string;
   price: number;
@@ -113,8 +118,7 @@ const more = articles.slice(7, 20);
         <section className="hero-grid">
           <div>
 <a
-  href={`/article?title=${encodeURIComponent(lead.title)}&summary=${encodeURIComponent(lead.summary || "")}&source=${encodeURIComponent(lead.source || "Financial News")}&image=${encodeURIComponent(lead.image || "/fallback.jpg")}`}
-  style={{ textDecoration: "none", color: "inherit" }}
+  href={`/article/${slugify(lead.title)}?title=${encodeURIComponent(lead.title)}&summary=${encodeURIComponent(lead.summary || "")}&source=${encodeURIComponent(lead.source || "Financial News")}&image=${encodeURIComponent(lead.image || "/fallback.jpg")}`}
 >
   <article className="lead-story">
     <img
@@ -155,7 +159,7 @@ const more = articles.slice(7, 20);
                 </div>
               </div>
 
-<a href={`/article?title=${encodeURIComponent(latest[4]?.title || "Markets continue to digest global rate expectations")}&summary=${encodeURIComponent(latest[4]?.summary || "Investors are watching inflation, rates and risk appetite.")}&source=${encodeURIComponent(latest[4]?.source || "Portfolio Manager")}&image=${encodeURIComponent(latest[4]?.image || "")}`} style={{ textDecoration: "none", color: "inherit" }}>
+<a href={`/article/${slugify(latest[4]?.title || "markets")}?title=${encodeURIComponent(latest[4]?.title || "Markets continue to digest global rate expectations")}&summary=${encodeURIComponent(latest[4]?.summary || "Investors are watching inflation, rates and risk appetite.")}&source=${encodeURIComponent(latest[4]?.source || "Portfolio Manager")}&image=${encodeURIComponent(latest[4]?.image || "")}`}>
   <article className="featured">
     <h3 className="section-label">Featured Analysis</h3>
 
@@ -207,7 +211,7 @@ const more = articles.slice(7, 20);
     {more.map((article) => (
 <a
   key={article.title}
-href={`/article?title=${encodeURIComponent(article.title)}&summary=${encodeURIComponent(article.summary || "")}&image=${encodeURIComponent(article.image || "")}&url=${encodeURIComponent(article.url || "")}&date=${encodeURIComponent(article.date || "")}`}
+href={`/article/${slugify(article.title)}?title=${encodeURIComponent(article.title)}&summary=${encodeURIComponent(article.summary || "")}&source=${encodeURIComponent(article.source || "")}&image=${encodeURIComponent(article.image || "")}`}
   style={{
     display: "flex",
     gap: "12px",
