@@ -1,22 +1,34 @@
-"use client";
+import { Metadata } from "next";
 
-import { useSearchParams } from "next/navigation";
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: { title?: string; summary?: string };
+}): Promise<Metadata> {
+  const title = searchParams.title || "Article";
+  const description = searchParams.summary || "Latest financial news and analysis";
+
+  return {
+    title: `${title} | Portfolio Manager`,
+    description,
+  };
+}
+
+
 
 export default function ArticlePage({ params }: { params: { slug: string } }) {
-  const searchParams = useSearchParams();
+ 
 
-  const title =
-    searchParams.get("title") ||
-    params.slug.replace(/-/g, " ");
+  const title = params.slug.replace(/-/g, " ");
 
-  const source = searchParams.get("source") || "Portfolio Manager";
-  const image = searchParams.get("image") || "";
-  const summary = searchParams.get("summary") || "";
-  const date = searchParams.get("date");
+const source = "Portfolio Manager";
+const image = "";
+const summary = "";
+const date = null;
 
   return (
     <main style={{ padding: "40px", maxWidth: "800px", margin: "0 auto" }}>
-      <h1>{title}</h1>
+      <h1>{title.charAt(0).toUpperCase() + title.slice(1)}</h1>
 
       {date && <p>{new Date(date).toLocaleDateString()}</p>}
 
