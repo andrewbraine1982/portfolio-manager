@@ -59,14 +59,37 @@ const date = searchParams.get("date");
           />
         )}
 
-        {summary && (
-          <p style={{
-            fontSize: "21px",
-            lineHeight: "1.6",
-            color: "#444"
-          }}>
-            {summary}
-          </p>
+        <section style={{ marginTop: "30px", borderTop: "1px solid #ddd", paddingTop: "24px" }}>
+
+  <h2 style={{ fontFamily: "Georgia, serif", fontSize: "24px" }}>
+    What Happened
+  </h2>
+  <p style={{ fontSize: "18px", lineHeight: "1.7", color: "#333" }}>
+    {summary}
+  </p>
+
+  <h2 style={{ fontFamily: "Georgia, serif", fontSize: "24px", marginTop: "24px" }}>
+    Why It Matters
+  </h2>
+  <p style={{ fontSize: "18px", lineHeight: "1.7", color: "#444" }}>
+    This development highlights shifting dynamics across financial markets and may influence investor sentiment, risk appetite and capital allocation decisions.
+  </p>
+
+  <h2 style={{ fontFamily: "Georgia, serif", fontSize: "24px", marginTop: "24px" }}>
+    Market Implications
+  </h2>
+  <p style={{ fontSize: "18px", lineHeight: "1.7", color: "#444" }}>
+    Movements of this nature can drive volatility across equities, fixed income and commodities, particularly in sectors directly exposed to the underlying theme.
+  </p>
+
+  <h2 style={{ fontFamily: "Georgia, serif", fontSize: "24px", marginTop: "24px" }}>
+    Portfolio View
+  </h2>
+  <p style={{ fontSize: "18px", lineHeight: "1.7", color: "#444" }}>
+    Portfolio managers should monitor developments closely and consider whether current positioning reflects evolving macro risks and opportunities.
+  </p>
+
+</section>
         )}
 {url && (
   <a
