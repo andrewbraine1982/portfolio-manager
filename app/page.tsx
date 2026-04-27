@@ -291,21 +291,23 @@ style={{
     ))}
   </div>
 </section>
-          <aside className="right-rail">
-            <section className="most-read">
-              <h3 className="section-label">Most Read</h3>
-              {articles.slice(0, 5).map((item, index) => (
-<a
-  className="most-row"
-  href={`/article/${slugify(item.title)}?title=${encodeURIComponent(item.title)}&summary=${encodeURIComponent(item.summary || "")}&source=${encodeURIComponent(item.source || "")}&image=${encodeURIComponent(item.image || "")}`}
-  key={item.title}
->
-                  <span>{index + 1}</span>
-                  <h4>{item.title}</h4>
-                  {item.image && <img className="most-image" src={item.image} alt={item.title} />}
-                </a>
-              ))}
-            </section>
+<aside className="right-rail">
+  <section className="most-read">
+    <h3 className="section-label">Most Read</h3>
+    {articles.slice(0, 5).map((item, index) => (
+      <a
+        className="most-row"
+        href={`/article/${slugify(item.title)}?title=${encodeURIComponent(item.title)}&summary=${encodeURIComponent(item.summary || "")}&source=${encodeURIComponent(item.source || "")}&image=${encodeURIComponent(item.image || "")}`}
+        key={item.title}
+      >
+        <span>{index + 1}</span>
+        <h4>{makeSeoTitle(item.title)}</h4>
+        {item.image && (
+          <img className="most-image" src={item.image} alt={item.title} />
+        )}
+      </a>
+    ))}
+  </section>
 
             <section className="snapshot">
               <h3 className="section-label">Market Snapshot</h3>
