@@ -150,15 +150,33 @@ const more = articles.slice(7, 20);
                 </div>
               </div>
 
-              <article className="featured">
-                <h3 className="section-label">Featured Analysis</h3>
-                {latest[4]?.image && (
-                  <img className="analysis-image" src={latest[4].image} alt={latest[4].title} />
-                )}
-                <h4>{latest[4]?.title || "Markets continue to digest global rate expectations"}</h4>
-                <p>{latest[4]?.summary || "Investors are watching inflation, rates and risk appetite."}</p>
-                <p className="byline">{latest[4]?.source || "Portfolio Manager"}</p>
-              </article>
+<a href={`/article?title=${encodeURIComponent(latest[4]?.title || "Markets continue to digest global rate expectations")}&summary=${encodeURIComponent(latest[4]?.summary || "Investors are watching inflation, rates and risk appetite.")}&source=${encodeURIComponent(latest[4]?.source || "Portfolio Manager")}&image=${encodeURIComponent(latest[4]?.image || "")}`} style={{ textDecoration: "none", color: "inherit" }}>
+  <article className="featured">
+    <h3 className="section-label">Featured Analysis</h3>
+
+    {latest[4]?.image && (
+      <img
+        className="analysis-image"
+        src={latest[4].image}
+        alt={latest[4].title}
+      />
+    )}
+
+    <h4>
+      {latest[4]?.title ||
+        "Markets continue to digest global rate expectations"}
+    </h4>
+
+    <p>
+      {latest[4]?.summary ||
+        "Investors are watching inflation, rates and risk appetite."}
+    </p>
+
+    <p className="byline">
+      {latest[4]?.source || "Portfolio Manager"}
+    </p>
+  </article>
+</a>             
             </section>
           </div>
 <section style={{
