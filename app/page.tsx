@@ -133,7 +133,7 @@ const more = articles.slice(7, 20);
                 <h3 className="section-label">Latest Briefings</h3>
                 <div className="latest-list">
                   {latest.slice(0, 4).map((article) => (
-                    <a
+<a
   className="latest-item"
   key={article.title}
   href={`/article?title=${encodeURIComponent(article.title)}&summary=${encodeURIComponent(article.summary || "")}&image=${encodeURIComponent(article.image || "")}&source=${encodeURIComponent(article.source || "")}`}
