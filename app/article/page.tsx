@@ -10,7 +10,8 @@ function ArticleContent() {
   const source = searchParams.get("source") || "Portfolio Manager";
   const image = searchParams.get("image") || "";
   const summary = searchParams.get("summary") || "";
-
+const url = searchParams.get("url");
+const date = searchParams.get("date");
   return (
     <main style={{
       background: "#f4efe6",
@@ -40,7 +41,11 @@ function ArticleContent() {
         }}>
           {title}
         </h1>
-
+{date && (
+  <p style={{ marginTop: "10px", color: "#666" }}>
+    {new Date(date).toLocaleDateString()}
+  </p>
+)}
         {image && (
           <img
             src={image}
@@ -63,7 +68,18 @@ function ArticleContent() {
             {summary}
           </p>
         )}
-      </article>
+     {url && (
+  <iframe
+    src={url}
+    style={{
+      width: "100%",
+      height: "800px",
+      border: "none",
+      marginTop: "30px",
+    }}
+  />
+  )}
+</article>
     </main>
   );
 }
