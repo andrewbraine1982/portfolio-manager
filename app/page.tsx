@@ -113,14 +113,14 @@ const more = articles.slice(7, 20);
 
         <nav className="nav-wrap">
           <div className="nav">
-            <a>Markets</a>
-            <a>Economy</a>
-            <a>Companies</a>
-            <a>Technology</a>
-            <a>Policy</a>
-            <a>International</a>
-            <a>Opinion</a>
-            <a>Portfolio Strategy</a>
+  <a href="/category/markets">Markets</a>
+<a href="/category/economy">Economy</a>
+<a href="/category/companies">Companies</a>
+<a href="/category/technology">Technology</a>
+<a href="/category/policy">Policy</a>
+<a href="/category/international">International</a>
+<a href="/category/opinion">Opinion</a>
+<a href="/category/portfolio-strategy">Portfolio Strategy</a>
           </div>
         </nav>
       </header>
