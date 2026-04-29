@@ -92,6 +92,22 @@ return (
     }}
   >
     <section style={{ maxWidth: "1100px", margin: "0 auto" }}>
+<nav
+  style={{
+    display: "flex",
+    gap: "24px",
+    borderBottom: "1px solid #d6cbbb",
+    paddingBottom: "16px",
+    marginBottom: "36px",
+    fontWeight: 700,
+  }}
+>
+  <a href="/" style={{ color: "inherit", textDecoration: "none" }}>Home</a>
+  <a href="/category/markets" style={{ color: "inherit", textDecoration: "none" }}>Markets</a>
+  <a href="/category/economy" style={{ color: "inherit", textDecoration: "none" }}>Economy</a>
+  <a href="/category/companies" style={{ color: "inherit", textDecoration: "none" }}>Companies</a>
+  <a href="/category/technology" style={{ color: "inherit", textDecoration: "none" }}>Technology</a>
+</nav>
       <p
         style={{
           textTransform: "uppercase",
