@@ -49,7 +49,7 @@ export async function GET() {
 
   const data = await res.json();
 
-  const articles = data
+ const articles = (Array.isArray(data) ? data : data?.data || [])
 .filter((item: any) => item.headline && item.url)
     .slice(0, 24)
   .map((item: any) => {
