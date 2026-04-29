@@ -82,30 +82,109 @@ const filtered = articles.filter((article: any) => {
   return keywords.some((word) => text.includes(word));
 });
 
-  return (
-    <main style={{ padding: "40px", maxWidth: "900px", margin: "0 auto" }}>
-      <h1 style={{ textTransform: "capitalize" }}>{keyword}</h1>
+return (
+  <main
+    style={{
+      background: "#f4efe6",
+      minHeight: "100vh",
+      padding: "60px 24px",
+      color: "#111",
+    }}
+  >
+    <section style={{ maxWidth: "1100px", margin: "0 auto" }}>
+      <p
+        style={{
+          textTransform: "uppercase",
+          letterSpacing: "4px",
+          fontSize: "12px",
+          fontWeight: 700,
+          marginBottom: "16px",
+        }}
+      >
+        Portfolio Manager
+      </p>
+
+      <h1
+        style={{
+          fontFamily: "Georgia, serif",
+          fontSize: "52px",
+          textTransform: "capitalize",
+          marginBottom: "40px",
+        }}
+      >
+        {keyword}
+      </h1>
 
       {filtered.length === 0 && (
         <p>No articles found for this category yet.</p>
       )}
 
-      {filtered.map((article: any) => (
-        <a
-          key={article.title}
-          href={`/article/${slugify(article.title)}?title=${encodeURIComponent(article.title)}&summary=${encodeURIComponent(article.summary || "")}&source=${encodeURIComponent(article.source || "")}&image=${encodeURIComponent(article.image || "")}`}
-          style={{
-            display: "block",
-            marginBottom: "24px",
-            color: "inherit",
-            textDecoration: "none",
-          }}
-        >
-          <h3>{article.title}</h3>
-          <p>{article.summary}</p>
-          <p>{article.source}</p>
-        </a>
-      ))}
-    </main>
-  );
-}
+      <div style={{ display: "grid", gap: "28px" }}>
+        {filtered.map((article: any) => (
+          <a
+            key={article.title}
+            href={`/article/${slugify(article.title)}?title=${encodeURIComponent(article.title)}&summary=${encodeURIComponent(article.summary || "")}&source=${encodeURIComponent(article.source || "")}&image=${encodeURIComponent(article.image || "")}`}
+            style={{
+              display: "grid",
+              gridTemplateColumns: "180px 1fr",
+              gap: "24px",
+              paddingBottom: "28px",
+              borderBottom: "1px solid #d6cbbb",
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
+            {article.image && (
+              <img
+                src={article.image}
+                alt={article.title}
+                style={{
+                  width: "180px",
+                  height: "110px",
+                  objectFit: "cover",
+                  background: "#ddd",
+                }}
+              />
+            )}
+
+            <div>
+              <h2
+                style={{
+                  fontFamily: "Georgia, serif",
+                  fontSize: "26px",
+                  lineHeight: "1.15",
+                  margin: "0 0 12px",
+                }}
+              >
+                {article.title}
+              </h2>
+
+              <p
+                style={{
+                  fontSize: "16px",
+                  lineHeight: "1.5",
+                  margin: "0 0 10px",
+                  color: "#444",
+                }}
+              >
+                {article.summary}
+              </p>
+
+              <p
+                style={{
+                  fontSize: "12px",
+                  textTransform: "uppercase",
+                  letterSpacing: "2px",
+                  fontWeight: 700,
+                  margin: 0,
+                }}
+              >
+                {article.source || "Portfolio Manager"}
+              </p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  </main>
+);
