@@ -118,73 +118,143 @@ return (
       {filtered.length === 0 && (
         <p>No articles found for this category yet.</p>
       )}
-
-      <div style={{ display: "grid", gap: "28px" }}>
-        {filtered.map((article: any) => (
-          <a
-            key={article.title}
-            href={`/article/${slugify(article.title)}?title=${encodeURIComponent(article.title)}&summary=${encodeURIComponent(article.summary || "")}&source=${encodeURIComponent(article.source || "")}&image=${encodeURIComponent(article.image || "")}`}
+<div
+  style={{
+    display: "grid",
+    gridTemplateColumns: "2fr 1fr",
+    gap: "40px",
+  }}
+>
+  {/* LEFT COLUMN */}
+  <div>
+    {/* HERO ARTICLE */}
+    {filtered[0] && (
+      <a
+        href={`/article/${slugify(filtered[0].title)}`}
+        style={{ textDecoration: "none", color: "inherit" }}
+      >
+        {filtered[0].image && (
+          <img
+            src={filtered[0].image}
             style={{
-              display: "grid",
-              gridTemplateColumns: "180px 1fr",
-              gap: "24px",
-              paddingBottom: "28px",
-              borderBottom: "1px solid #d6cbbb",
-              color: "inherit",
-              textDecoration: "none",
+              width: "100%",
+              height: "320px",
+              objectFit: "cover",
+              marginBottom: "20px",
             }}
-          >
-            {article.image && (
-              <img
-                src={article.image}
-                alt={article.title}
-                style={{
-                  width: "180px",
-                  height: "110px",
-                  objectFit: "cover",
-                  background: "#ddd",
-                }}
-              />
-            )}
+          />
+        )}
 
-            <div>
-              <h2
-                style={{
-                  fontFamily: "Georgia, serif",
-                  fontSize: "26px",
-                  lineHeight: "1.15",
-                  margin: "0 0 12px",
-                }}
-              >
-                {article.title}
-              </h2>
+        <h2
+          style={{
+            fontFamily: "Georgia, serif",
+            fontSize: "36px",
+            lineHeight: "1.2",
+            marginBottom: "12px",
+          }}
+        >
+          {filtered[0].title}
+        </h2>
 
-              <p
-                style={{
-                  fontSize: "16px",
-                  lineHeight: "1.5",
-                  margin: "0 0 10px",
-                  color: "#444",
-                }}
-              >
-                {article.summary}
-              </p>
+        <p style={{ fontSize: "18px", color: "#444" }}>
+          {filtered[0].summary}
+        </p>
+      </a>
+    )}
 
-              <p
-                style={{
-                  fontSize: "12px",
-                  textTransform: "uppercase",
-                  letterSpacing: "2px",
-                  fontWeight: 700,
-                  margin: 0,
-                }}
-              >
-                {article.source || "Portfolio Manager"}
-              </p>
-            </div>
-          </a>
-        ))}
+    {/* ARTICLE LIST */}
+    <div style={{ marginTop: "40px" }}>
+      {filtered.slice(1).map((article: any) => (
+        <a
+          key={article.title}
+          href={`/article/${slugify(article.title)}`}
+          style={{
+            display: "grid",
+            gridTemplateColumns: "160px 1fr",
+            gap: "20px",
+            paddingBottom: "24px",
+            marginBottom: "24px",
+            borderBottom: "1px solid #ddd",
+            textDecoration: "none",
+            color: "inherit",
+          }}
+        >
+          {article.image && (
+            <img
+              src={article.image}
+              style={{
+                width: "160px",
+                height: "100px",
+                objectFit: "cover",
+              }}
+            />
+          )}
+
+          <div>
+            <h3
+              style={{
+                fontFamily: "Georgia, serif",
+                fontSize: "22px",
+                marginBottom: "8px",
+              }}
+            >
+              {article.title}
+            </h3>
+
+            <p style={{ fontSize: "15px", color: "#555" }}>
+              {article.summary}
+            </p>
+
+            <p
+              style={{
+                fontSize: "11px",
+                textTransform: "uppercase",
+                letterSpacing: "2px",
+                marginTop: "6px",
+              }}
+            >
+              {article.source || "Portfolio Manager"}
+            </p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+
+  {/* RIGHT COLUMN */}
+  <div>
+    <h3
+      style={{
+        borderTop: "3px solid black",
+        paddingTop: "10px",
+        marginBottom: "20px",
+      }}
+    >
+      Most Read
+    </h3>
+
+    {filtered.slice(0, 5).map((article: any, i: number) => (
+      <div
+        key={article.title}
+        style={{
+          display: "flex",
+          gap: "12px",
+          marginBottom: "18px",
+        }}
+      >
+        <span style={{ fontWeight: "bold" }}>{i + 1}</span>
+
+        <a
+          href={`/article/${slugify(article.title)}`}
+          style={{ textDecoration: "none", color: "inherit" }}
+        >
+          {article.title}
+        </a>
       </div>
+    ))}
+  </div>
+</div>
+
     </section>
   </main>
 );
