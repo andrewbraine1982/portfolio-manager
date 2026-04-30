@@ -90,7 +90,7 @@ export default async function ArticlePage({
   const image = resolvedSearchParams.image || "";
   const summary = resolvedSearchParams.summary || "";
   const date = resolvedSearchParams.date;
-
+const aiAnalysis = await getAIAnalysis(title, summary, source);
 return (
   <main style={{ background: "#f4efe6", minHeight: "100vh", padding: "60px 24px" }}>
     <article style={{ maxWidth: "900px", margin: "0 auto" }}>
@@ -120,7 +120,7 @@ return (
         </h2>
 
  <p style={{ fontSize: "18px", lineHeight: "1.7", color: "#333" }}>
-  {summary}
+{aiAnalysis?.portfolioView || summary}
 </p>       
      
       </section>
@@ -131,8 +131,8 @@ return (
         </h2>
 
         <p style={{ fontSize: "18px", lineHeight: "1.7", color: "#333" }}>
-          Portfolio managers should consider whether this development changes expectations around
-          earnings, interest rates, liquidity, credit conditions, or risk appetite.
+          {aiAnalysis?.whyItMatters}
+        
         </p>
       </section>
 
