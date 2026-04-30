@@ -185,7 +185,7 @@ const more = articles.slice(7, 20);
     </p>
   </div>
 </div>
-        </nav>
+        
       </header>
 
       <section className="market-tape">
