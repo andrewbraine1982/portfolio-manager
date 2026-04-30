@@ -44,19 +44,37 @@ const getAIAnalysis = unstable_cache(
         },
         body: JSON.stringify({
           model: "gpt-4o-mini",
-input: `You are writing for a premium institutional finance publication.
+input: `You are a senior institutional portfolio strategist writing for professional investors.
+
+Do NOT summarise or paraphrase the article. Interpret it.
 
 Article title: ${title}
 Article summary: ${summary}
 Source: ${source}
 
-Write sharp, original investor analysis. No fluff. No repetition. No generic phrases.
+Write two original analysis blocks:
+
+1. portfolioView:
+Explain what this could mean for asset allocation, sector exposure, risk appetite, rates, credit, commodities, geopolitics, or earnings expectations.
+
+2. whyItMatters:
+Explain the second-order market implication. What should a portfolio manager watch next?
+
+Rules:
+- Do not repeat the headline.
+- Do not repeat the summary.
+- No generic phrases.
+- No "this story is relevant".
+- Be specific.
+- If the article is political/geopolitical, connect it to markets, sectors, commodities, sanctions, fiscal policy, or risk premium.
+- If there is not enough information, make a cautious but useful market interpretation.
 
 Return ONLY valid JSON:
 {
   "portfolioView": "...",
   "whyItMatters": "..."
 }
+
 
 Each field must be 1–2 sentences max. Make it specific to the story.`,
 
