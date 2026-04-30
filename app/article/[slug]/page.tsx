@@ -76,10 +76,10 @@ return (
           Portfolio View
         </h2>
 
-        <p style={{ fontSize: "18px", lineHeight: "1.7", color: "#333" }}>
-          This story may be relevant for investors because it highlights developments that could affect
-          market sentiment, sector positioning, company valuations, or broader portfolio risk.
-        </p>
+ <p style={{ fontSize: "18px", lineHeight: "1.7", color: "#333" }}>
+  {summary}
+</p>       
+     
       </section>
 
       <section style={{ borderTop: "1px solid #d6cbbb", paddingTop: "24px", marginTop: "30px" }}>
