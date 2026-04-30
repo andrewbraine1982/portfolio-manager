@@ -48,25 +48,68 @@ export default async function ArticlePage({
   const summary = resolvedSearchParams.summary || "";
   const date = resolvedSearchParams.date;
 
-  return (
-    <main style={{ padding: "40px", maxWidth: "800px", margin: "0 auto" }}>
-      <h1>{title}</h1>
+return (
+  <main style={{ background: "#f4efe6", minHeight: "100vh", padding: "60px 24px" }}>
+    <article style={{ maxWidth: "900px", margin: "0 auto" }}>
+      <p style={{ textTransform: "uppercase", letterSpacing: "3px", fontSize: "12px", fontWeight: 700 }}>
+        {source}
+      </p>
 
-      {date && <p>{new Date(date).toLocaleDateString()}</p>}
+      <h1 style={{ fontFamily: "Georgia, serif", fontSize: "52px", lineHeight: "1.1", marginBottom: "24px" }}>
+        {title}
+      </h1>
 
       {image && (
         <img
           src={image}
           alt={title}
-          style={{ width: "100%", margin: "20px 0" }}
+          style={{ width: "100%", maxHeight: "460px", objectFit: "cover", marginBottom: "28px" }}
         />
       )}
 
-      <p>{summary}</p>
-
-      <p style={{ marginTop: "20px", color: "#666" }}>
-        {source}
+      <p style={{ fontSize: "21px", lineHeight: "1.6", color: "#333", marginBottom: "36px" }}>
+        {summary}
       </p>
-    </main>
+
+      <section style={{ borderTop: "3px solid #111", paddingTop: "24px", marginTop: "30px" }}>
+        <h2 style={{ fontFamily: "Georgia, serif", fontSize: "30px" }}>
+          Portfolio View
+        </h2>
+
+        <p style={{ fontSize: "18px", lineHeight: "1.7", color: "#333" }}>
+          This story may be relevant for investors because it highlights developments that could affect
+          market sentiment, sector positioning, company valuations, or broader portfolio risk.
+        </p>
+      </section>
+
+      <section style={{ borderTop: "1px solid #d6cbbb", paddingTop: "24px", marginTop: "30px" }}>
+        <h2 style={{ fontFamily: "Georgia, serif", fontSize: "30px" }}>
+          Why it matters
+        </h2>
+
+        <p style={{ fontSize: "18px", lineHeight: "1.7", color: "#333" }}>
+          Portfolio managers should consider whether this development changes expectations around
+          earnings, interest rates, liquidity, credit conditions, or risk appetite.
+        </p>
+      </section>
+
+      <p style={{ marginTop: "36px" }}>
+        <a
+          href="#"
+          style={{
+            display: "inline-block",
+            border: "1px solid #111",
+            padding: "12px 18px",
+            color: "#111",
+            textDecoration: "none",
+            fontWeight: 700,
+          }}
+        >
+          Source: {source}
+        </a>
+      </p>
+    </article>
+  </main>
+);
   );
 }
