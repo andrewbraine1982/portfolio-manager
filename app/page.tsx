@@ -137,7 +137,7 @@ const more = articles.slice(7, 20);
       position: "absolute",
       inset: 0,
       background:
-        "linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.75))",
+"linear-gradient(to right, rgba(0,0,0,0.75), rgba(0,0,0,0.2), transparent)"        
     }}
   />
 
