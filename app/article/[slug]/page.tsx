@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-
+import { unstable_cache } from "next/cache";
 type PageProps = {
   params: Promise<{ slug: string }>;
   searchParams: Promise<{
@@ -31,7 +31,50 @@ export async function generateMetadata({
     description,
   };
 }
+const getAIAnalysis = unstable_cache(
+  async (title: string, summary: string, source: string) => {
+    if (!process.env.OPENAI_API_KEY) return null;
 
+    try {
+      const res = await fetch("https://api.openai.com/v1/responses", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          model: "gpt-4o-mini",
+input: `You are writing for a premium institutional finance publication.
+
+Article title: ${title}
+Article summary: ${summary}
+Source: ${source}
+
+Write sharp, original investor analysis. No fluff. No repetition. No generic phrases.
+
+Return ONLY valid JSON:
+{
+  "portfolioView": "...",
+  "whyItMatters": "..."
+}
+
+Each field must be 1–2 sentences max. Make it specific to the story.`,
+
+
+
+        }),
+      });
+
+      const data = await res.json();
+      const text = data.output_text || "";
+      return JSON.parse(text);
+    } catch {
+      return null;
+    }
+  },
+  ["article-ai-analysis"],
+  { revalidate: 86400 }
+);
 export default async function ArticlePage({
   params,
   searchParams,
