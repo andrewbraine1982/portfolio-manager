@@ -110,15 +110,17 @@ const more = articles.slice(7, 20);
           <h1 className="logo-title">Portfolio Manager</h1>
           <p className="logo-subtitle">News · Analysis · Insight</p>
         </section>
+{/* HERO */}
 <div
   style={{
     position: "relative",
     width: "100%",
-    height: "420px",
+    height: "520px",
     marginBottom: "40px",
     overflow: "hidden",
   }}
 >
+  {/* Background Image */}
   <img
     src="/hong-kong-hero.jpg"
     alt="Hong Kong skyline"
@@ -129,24 +131,24 @@ const more = articles.slice(7, 20);
     }}
   />
 
-  {/* Overlay */}
+  {/* Gradient Overlay */}
   <div
     style={{
       position: "absolute",
       inset: 0,
       background:
-        "linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6))",
+        "linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.75))",
     }}
   />
 
-  {/* Text */}
+  {/* Text Content */}
   <div
     style={{
       position: "absolute",
-      bottom: "40px",
-      left: "24px",
+      bottom: "60px",
+      left: "40px",
       color: "white",
-      maxWidth: "800px",
+      maxWidth: "700px",
     }}
   >
     <p
@@ -156,6 +158,7 @@ const more = articles.slice(7, 20);
         fontSize: "12px",
         fontWeight: 700,
         marginBottom: "12px",
+        opacity: 0.9,
       }}
     >
       Portfolio Manager
@@ -164,9 +167,9 @@ const more = articles.slice(7, 20);
     <h1
       style={{
         fontFamily: "Georgia, serif",
-        fontSize: "48px",
+        fontSize: "56px",
         lineHeight: "1.1",
-        margin: 0,
+        marginBottom: "16px",
       }}
     >
       Global Markets Intelligence
@@ -174,26 +177,14 @@ const more = articles.slice(7, 20);
 
     <p
       style={{
-        marginTop: "12px",
-        fontSize: "16px",
-        color: "#ddd",
+        fontSize: "18px",
+        opacity: 0.9,
       }}
     >
       Real-time financial news and curated insights for modern investors
     </p>
   </div>
 </div>
-        <nav className="nav-wrap">
-          <div className="nav">
-  <a href="/category/markets">Markets</a>
-<a href="/category/economy">Economy</a>
-<a href="/category/companies">Companies</a>
-<a href="/category/technology">Technology</a>
-<a href="/category/policy">Policy</a>
-<a href="/category/international">International</a>
-<a href="/category/opinion">Opinion</a>
-<a href="/category/portfolio-strategy">Portfolio Strategy</a>
-          </div>
         </nav>
       </header>
 
