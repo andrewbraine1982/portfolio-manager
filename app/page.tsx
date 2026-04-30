@@ -110,7 +110,79 @@ const more = articles.slice(7, 20);
           <h1 className="logo-title">Portfolio Manager</h1>
           <p className="logo-subtitle">News · Analysis · Insight</p>
         </section>
+<div
+  style={{
+    position: "relative",
+    width: "100%",
+    height: "420px",
+    marginBottom: "40px",
+    overflow: "hidden",
+  }}
+>
+  <img
+    src="/hong-kong-hero.jpg"
+    alt="Hong Kong skyline"
+    style={{
+      width: "100%",
+      height: "100%",
+      objectFit: "cover",
+    }}
+  />
 
+  {/* Overlay */}
+  <div
+    style={{
+      position: "absolute",
+      inset: 0,
+      background:
+        "linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6))",
+    }}
+  />
+
+  {/* Text */}
+  <div
+    style={{
+      position: "absolute",
+      bottom: "40px",
+      left: "24px",
+      color: "white",
+      maxWidth: "800px",
+    }}
+  >
+    <p
+      style={{
+        textTransform: "uppercase",
+        letterSpacing: "3px",
+        fontSize: "12px",
+        fontWeight: 700,
+        marginBottom: "12px",
+      }}
+    >
+      Portfolio Manager
+    </p>
+
+    <h1
+      style={{
+        fontFamily: "Georgia, serif",
+        fontSize: "48px",
+        lineHeight: "1.1",
+        margin: 0,
+      }}
+    >
+      Global Markets Intelligence
+    </h1>
+
+    <p
+      style={{
+        marginTop: "12px",
+        fontSize: "16px",
+        color: "#ddd",
+      }}
+    >
+      Real-time financial news and curated insights for modern investors
+    </p>
+  </div>
+</div>
         <nav className="nav-wrap">
           <div className="nav">
   <a href="/category/markets">Markets</a>
