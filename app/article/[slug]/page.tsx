@@ -93,8 +93,9 @@ Each field must be 1–2 sentences max. Make it specific to the story.`,
   console.error("❌ OPENAI ERROR:", err);
   return null;
   }
-["article-ai-analysis"],
- { revalidate: 1 }
+    },
+  ["article-ai-analysis"],
+  { revalidate: 1 }
 );
 export default async function ArticlePage({
   params,
