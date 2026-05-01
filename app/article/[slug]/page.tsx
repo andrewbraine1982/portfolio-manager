@@ -87,8 +87,21 @@ Each field must be 1–2 sentences max. Make it specific to the story.`,
       });
 
       const data = await res.json();
-      const text = data.output_text || "";
-      return JSON.parse(text);
+const text =
+  data.output_text ||
+  data.output?.[0]?.content?.[0]?.text ||
+  "";
+
+console.log("RAW OPENAI TEXT:", text);
+
+if (!text) return null;
+
+const cleaned = text
+  .replace(/```json/g, "")
+  .replace(/```/g, "")
+  .trim();
+
+return JSON.parse(cleaned);
   } catch (err) {
   console.error("❌ OPENAI ERROR:", err);
   return null;
