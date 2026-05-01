@@ -113,6 +113,7 @@ export default async function ArticlePage({
   const date = resolvedSearchParams.date;
   console.log("🔥 CALLING AI ANALYSIS");
 const aiAnalysis = await getAIAnalysis(title, summary, source);
+  console.log("🧠 AI RESULT:", aiAnalysis);
 return (
   <main style={{ background: "#f4efe6", minHeight: "100vh", padding: "60px 24px" }}>
     <article style={{ maxWidth: "900px", margin: "0 auto" }}>
