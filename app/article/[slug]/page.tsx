@@ -49,7 +49,7 @@ input: `You are a senior institutional portfolio strategist writing for professi
 Do NOT summarise or paraphrase the article. Interpret it.
 
 Article title: ${title}
-Article summary: ${summary}
+
 Source: ${source}
 
 Write two original analysis blocks:
