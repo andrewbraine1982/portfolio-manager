@@ -33,7 +33,10 @@ export async function generateMetadata({
 }
 const getAIAnalysis = unstable_cache(
   async (title: string, summary: string, source: string) => {
-    if (!process.env.OPENAI_API_KEY) return null;
+  if (!process.env.OPENAI_API_KEY) {
+  console.error("❌ MISSING OPENAI_API_KEY");
+  return null;
+}`
 
     try {
       const res = await fetch("https://api.openai.com/v1/responses", {
