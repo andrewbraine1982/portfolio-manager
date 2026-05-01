@@ -90,7 +90,7 @@ Each field must be 1–2 sentences max. Make it specific to the story.`,
       return null;
     }
   },
-[`article-ai-analysis-${title}`],
+["article-ai-analysis"],
  { revalidate: 1 }
 );
 export default async function ArticlePage({
