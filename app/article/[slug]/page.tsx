@@ -111,6 +111,7 @@ export default async function ArticlePage({
   const image = resolvedSearchParams.image || "";
   const summary = resolvedSearchParams.summary || "";
   const date = resolvedSearchParams.date;
+  console.log("🔥 CALLING AI ANALYSIS");
 const aiAnalysis = await getAIAnalysis(title, summary, source);
 return (
   <main style={{ background: "#f4efe6", minHeight: "100vh", padding: "60px 24px" }}>
