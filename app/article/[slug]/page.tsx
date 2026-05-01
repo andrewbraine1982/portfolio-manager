@@ -89,10 +89,10 @@ Each field must be 1–2 sentences max. Make it specific to the story.`,
       const data = await res.json();
       const text = data.output_text || "";
       return JSON.parse(text);
-   catch (err) {
+  } catch (err) {
   console.error("❌ OPENAI ERROR:", err);
   return null;
-  },
+  }
 ["article-ai-analysis"],
  { revalidate: 1 }
 );
