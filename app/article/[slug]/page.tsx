@@ -36,7 +36,7 @@ const getAIAnalysis = unstable_cache(
   if (!process.env.OPENAI_API_KEY) {
   console.error("❌ MISSING OPENAI_API_KEY");
   return null;
-}`
+}
 
     try {
       const res = await fetch("https://api.openai.com/v1/responses", {
