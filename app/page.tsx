@@ -49,6 +49,17 @@ type Market = {
 };
 
 const fallbackArticles: Article[] = [
+  
+    {
+  title: "Why Oil Prices Are Falling Today While Gas Prices Rise",
+  summary:
+    "Oil prices are falling even as natural gas markets move higher. Diverging supply dynamics, storage constraints, and regional demand shifts are driving the split between Brent, WTI crude and Waha Hub gas prices.",
+  image:
+    "https://images.unsplash.com/photo-1516937941344-00b4e0337589?auto=format&fit=crop&w=1200&q=80",
+  source: "Portfolio Manager",
+  url: "/article/why-oil-prices-falling-gas-rising",
+  date: new Date().toISOString(),
+},
   {
     title: "Fed signals higher for longer as inflation progress stalls",
     summary: "Markets reassess rate expectations as investors digest central bank guidance.",
