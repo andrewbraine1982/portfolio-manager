@@ -211,8 +211,71 @@ borderBottom: "1px solid #ddd",
 </div>
 </div>   // line 211
 
-<section>
-  ...EMAIL BOX...
+<section style={{
+  maxWidth: "960px",
+  margin: "28px auto",
+  padding: "28px",
+  background: "#111",
+  color: "#f6efe7",
+  textAlign: "center",
+  borderRadius: "2px"
+}}>
+  <p style={{
+    textTransform: "uppercase",
+    letterSpacing: "3px",
+    fontSize: "12px",
+    marginBottom: "10px"
+  }}>
+    Free briefing
+  </p>
+
+  <h2 style={{
+    fontFamily: "Georgia, serif",
+    fontSize: "32px",
+    marginBottom: "10px"
+  }}>
+    Get the Institutional Morning Briefing
+  </h2>
+
+  <p style={{
+    fontSize: "16px",
+    color: "#d8d0c4",
+    marginBottom: "20px"
+  }}>
+    Markets, macro and risk — explained before the trading day starts.
+  </p>
+
+  <form style={{
+    display: "flex",
+    gap: "10px",
+    justifyContent: "center",
+    flexWrap: "wrap"
+  }}>
+    <input
+      type="email"
+      placeholder="Enter your email"
+      style={{
+        padding: "13px 14px",
+        minWidth: "280px",
+        border: "1px solid #ccc",
+        fontSize: "15px"
+      }}
+    />
+
+    <button
+      type="button"
+      style={{
+        padding: "13px 22px",
+        background: "#f6efe7",
+        color: "#111",
+        border: "1px solid #f6efe7",
+        fontWeight: 700,
+        cursor: "pointer"
+      }}
+    >
+      Subscribe
+    </button>
+  </form>
 </section>
 
 </header>        
