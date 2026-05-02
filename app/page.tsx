@@ -209,8 +209,14 @@ borderBottom: "1px solid #ddd",
     </p>
   </div>
 </div>
-        
-      </header>
+</div>   // line 211
+
+<section>
+  ...EMAIL BOX...
+</section>
+
+</header>        
+  
 
       <section className="market-tape">
         <div className="ticker-track">
