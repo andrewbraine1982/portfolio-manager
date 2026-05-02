@@ -47,7 +47,11 @@ const getAIAnalysis = unstable_cache(
         },
         body: JSON.stringify({
           model: "gpt-4o-mini",
-          response_format: { type: "json_object" },
+text: {
+  format: {
+    type: "json_object"
+  }
+},
           input: `You are a senior financial journalist writing in the style of the Financial Times.
 
 Write a complete, original, publication-ready financial article from the information provided.
