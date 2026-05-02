@@ -1,5 +1,9 @@
 import { Metadata } from "next";
 import { unstable_cache } from "next/cache";
+
+export const metadata = {
+  metadataBase: new URL("https://www.portfoliomanager.co.uk"),
+};
 type PageProps = {
   params: Promise<{ slug: string }>;
   searchParams: Promise<{
@@ -18,18 +22,53 @@ export async function generateMetadata({
   const resolvedParams = await params;
   const resolvedSearchParams = await searchParams;
 
-  const title =
-    resolvedSearchParams.title ||
-    resolvedParams.slug.replace(/-/g, " ");
+const slug = resolvedParams.slug;
 
-  const description =
-    resolvedSearchParams.summary ||
-    "Latest financial news and market analysis.";
+let title =
+  resolvedSearchParams.title ||
+  slug.replace(/-/g, " ");
 
-  return {
-    title: `${title} | Portfolio Manager`,
-    description,
-  };
+let description =
+  resolvedSearchParams.summary ||
+  "Latest financial news and market analysis.";
+
+let keywords: string[] = [];
+
+if (slug === "why-oil-prices-falling-gas-rising") {
+  title = "Why Oil Prices Are Falling Today While Gas Prices Rise";
+  description =
+    "Oil prices are falling even as natural gas prices rise. Here's what's driving Brent crude, WTI and gas markets today.";
+  keywords = [
+    "why oil prices are falling",
+    "oil prices today",
+    "Brent crude price",
+    "WTI crude",
+    "natural gas prices",
+    "energy markets analysis",
+  ];
+}
+
+return {
+  title: `${title} | Portfolio Manager`,
+  description,
+  keywords,
+openGraph: {
+  title,
+  description,
+url: `https://www.portfoliomanager.co.uk/article/${slug}`,
+  siteName: "Portfolio Manager",
+  images: [
+    {
+      url:
+        resolvedSearchParams.image ||
+        "https://images.unsplash.com/photo-1516937941344-00b4e0337589",
+      width: 1200,
+      height: 630,
+    },
+  ],
+  type: "article",
+},
+};
 }
 const getAIAnalysis = unstable_cache(
   async (title: string, summary: string, source: string) => {
