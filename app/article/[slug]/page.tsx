@@ -46,13 +46,14 @@ const getAIAnalysis = unstable_cache(
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          model: "gpt-4o-mini",
+          model: "gpt-4o-mini", 
+max_output_tokens: 3500,          
 text: {
   format: {
     type: "json_object"
   }
 },
-          input: `You are a senior financial journalist writing in the style of the Financial Times.
+input: `You are a senior financial journalist writing in the style of the Financial Times.
 
 Write a complete, original, publication-ready financial article from the information provided.
 
@@ -68,20 +69,9 @@ Return ONLY valid JSON in this exact shape:
   "standfirst": "...",
   "articleBody": "...",
   "marketImplication": "..."
-}
+}`,
 
-Rules:
-- The articleBody is the main focus.
-- Write 700 to 1000 words in articleBody.
-- Use clear paragraphs separated by double line breaks.
-- Do not use markdown.
-- Do not use bullet points.
-- Do not invent exact numbers, quotes, dates, or named sources unless provided.
-- Use a serious financial-news tone.
-- Explain the business, market, macro, sector, investor, and risk implications.
-- The standfirst should be 1 to 2 sentences.
-- The marketImplication should be concise but specific.
-- If the information is limited, write cautiously and explain the uncertainty.`,
+
         }),
       });
 
