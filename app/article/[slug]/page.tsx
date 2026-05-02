@@ -82,6 +82,7 @@ Rules:
       });
 
       const data = await res.json();
+      console.log("FULL OPENAI RESPONSE:", JSON.stringify(data));
 
       const text =
         data.output_text ||
