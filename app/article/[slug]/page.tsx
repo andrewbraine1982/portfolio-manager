@@ -34,7 +34,7 @@ let description =
 
 let keywords: string[] = [];
 
-if (slug === "why-oil-prices-falling-gas-rising") {
+if (slug === "why-oil-prices-are-falling-today-while-gas-prices-rise") {
   title = "Why Oil Prices Are Falling Today While Gas Prices Rise";
   description =
     "Oil prices are falling even as natural gas prices rise. Here's what's driving Brent crude, WTI and gas markets today.";
