@@ -47,7 +47,7 @@ const getAIAnalysis = unstable_cache(
         },
         body: JSON.stringify({
           model: "gpt-4o-mini", 
-max_output_tokens: 3500,          
+max_output_tokens: 1200,       
 text: {
   format: {
     type: "json_object"
@@ -107,7 +107,7 @@ try {
     }
   },
   ["full-ai-article"],
-  { revalidate: 1 }
+ { revalidate: 86400 }
 );
 export default async function ArticlePage({
   params,
