@@ -137,7 +137,22 @@ return (
       <h1 style={{ fontFamily: "Georgia, serif", fontSize: "52px", lineHeight: "1.1", marginBottom: "24px" }}>
     {aiAnalysis?.headline || title}
       </h1>
+<p style={{
+  fontSize: "14px",
+  color: "#666",
+  marginTop: "8px",
+  marginBottom: "6px"
+}}>
+  By Portfolio Manager Editorial Team
+</p>
 
+<p style={{
+  fontSize: "13px",
+  color: "#888",
+  marginBottom: "20px"
+}}>
+  Published May 2026
+</p>
       {image && (
         <img
           src={image}
