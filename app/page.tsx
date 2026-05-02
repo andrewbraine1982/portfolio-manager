@@ -209,7 +209,7 @@ borderBottom: "1px solid #ddd",
     </p>
   </div>
 </div>
-</div>
+
 
 <section style={{
   maxWidth: "960px",
