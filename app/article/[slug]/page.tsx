@@ -33,81 +33,76 @@ export async function generateMetadata({
 }
 const getAIAnalysis = unstable_cache(
   async (title: string, summary: string, source: string) => {
-  if (!process.env.OPENAI_API_KEY) {
-  console.error("❌ MISSING OPENAI_API_KEY");
-  return null;
-}
+    if (!process.env.OPENAI_API_KEY) {
+      console.error("❌ MISSING OPENAI_API_KEY");
+      return null;
+    }
 
     try {
       const res = await fetch("https://api.openai.com/v1/responses", {
         method: "POST",
         headers: {
-Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+          Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
           model: "gpt-4o-mini",
-input: `You are a senior institutional portfolio strategist writing for professional investors.
+          input: `You are a senior financial journalist writing in the style of the Financial Times.
 
-Do NOT summarise or paraphrase the article. Interpret it.
+Write a complete, original, publication-ready financial article from the information provided.
 
 Article title: ${title}
 
 Source: ${source}
 
-Write two original analysis blocks:
+Summary: ${summary}
 
-1. portfolioView:
-Explain what this could mean for asset allocation, sector exposure, risk appetite, rates, credit, commodities, geopolitics, or earnings expectations.
-
-2. whyItMatters:
-Explain the second-order market implication. What should a portfolio manager watch next?
-
-Rules:
-- Do not repeat the headline.
-- Do not repeat the summary.
-- No generic phrases.
-- No "this story is relevant".
-- Be specific.
-- If the article is political/geopolitical, connect it to markets, sectors, commodities, sanctions, fiscal policy, or risk premium.
-- If there is not enough information, make a cautious but useful market interpretation.
-
-Return ONLY valid JSON:
+Return ONLY valid JSON in this exact shape:
 {
-  "portfolioView": "...",
-  "whyItMatters": "..."
+  "headline": "...",
+  "standfirst": "...",
+  "articleBody": "...",
+  "marketImplication": "..."
 }
 
-
-Each field must be 1–2 sentences max. Make it specific to the story.`,
-
-
-
+Rules:
+- The articleBody is the main focus.
+- Write 700 to 1000 words in articleBody.
+- Use clear paragraphs separated by double line breaks.
+- Do not use markdown.
+- Do not use bullet points.
+- Do not invent exact numbers, quotes, dates, or named sources unless provided.
+- Use a serious financial-news tone.
+- Explain the business, market, macro, sector, investor, and risk implications.
+- The standfirst should be 1 to 2 sentences.
+- The marketImplication should be concise but specific.
+- If the information is limited, write cautiously and explain the uncertainty.`,
         }),
       });
 
       const data = await res.json();
-const text =
-  data.output_text ||
-  data.output?.[0]?.content?.[0]?.text ||
-  "";
 
-console.log("RAW OPENAI TEXT:", text);
+      const text =
+        data.output_text ||
+        data.output?.[0]?.content?.[0]?.text ||
+        "";
 
-if (!text) return null;
+      console.log("RAW OPENAI TEXT:", text);
 
-const cleaned = text
-  .replace(/```json/g, "")
-  .replace(/```/g, "")
-  .trim();
+      if (!text) return null;
 
-return JSON.parse(cleaned);
-  } catch (err) {
-  console.error("❌ OPENAI ERROR:", err);
-  return null;
-  }
-    },
-  ["article-ai-analysis"],
+      const cleaned = text
+        .replace(/```json/g, "")
+        .replace(/```/g, "")
+        .trim();
+
+      return JSON.parse(cleaned);
+    } catch (err) {
+      console.error("❌ OPENAI ERROR:", err);
+      return null;
+    }
+  },
+  ["full-ai-article"],
   { revalidate: 1 }
 );
 export default async function ArticlePage({
@@ -136,13 +131,13 @@ return (
       </p>
 
       <h1 style={{ fontFamily: "Georgia, serif", fontSize: "52px", lineHeight: "1.1", marginBottom: "24px" }}>
-        {title}
+    {aiAnalysis?.headline || title}
       </h1>
 
       {image && (
         <img
           src={image}
-          alt={title}
+        alt={aiAnalysis?.headline || title}
           style={{ width: "100%", maxHeight: "460px", objectFit: "cover", marginBottom: "28px" }}
         />
       )}
@@ -151,25 +146,32 @@ return (
         {summary}
       </p>
 
-      <section style={{ borderTop: "3px solid #111", paddingTop: "24px", marginTop: "30px" }}>
-        <h2 style={{ fontFamily: "Georgia, serif", fontSize: "30px" }}>
-          Portfolio View
-        </h2>
+      {aiAnalysis?.standfirst && (
+        <p style={{ fontSize: "24px", lineHeight: "1.5", color: "#222", marginBottom: "36px", fontWeight: 500 }}>
+          {aiAnalysis.standfirst}
+        </p>
+      )}
 
- <p style={{ fontSize: "18px", lineHeight: "1.7", color: "#333" }}>
-{aiAnalysis?.portfolioView || summary}
-</p>       
-     
+      <section style={{ borderTop: "3px solid #111", paddingTop: "28px", marginTop: "30px" }}>
+        {(aiAnalysis?.articleBody || summary)
+          .split("\n\n")
+          .map((paragraph: string, index: number) => (
+            <p
+              key={index}
+              style={{ fontSize: "19px", lineHeight: "1.8", color: "#222", marginBottom: "24px" }}
+            >
+              {paragraph}
+            </p>
+          ))}
       </section>
 
-      <section style={{ borderTop: "1px solid #d6cbbb", paddingTop: "24px", marginTop: "30px" }}>
+      <section style={{ borderTop: "1px solid #d6cbbb", paddingTop: "24px", marginTop: "36px" }}>
         <h2 style={{ fontFamily: "Georgia, serif", fontSize: "30px" }}>
-          Why it matters
+          Market implication
         </h2>
 
         <p style={{ fontSize: "18px", lineHeight: "1.7", color: "#333" }}>
-          {aiAnalysis?.whyItMatters}
-        
+          {aiAnalysis?.marketImplication}
         </p>
       </section>
 
