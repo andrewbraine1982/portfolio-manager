@@ -47,6 +47,7 @@ const getAIAnalysis = unstable_cache(
         },
         body: JSON.stringify({
           model: "gpt-4o-mini",
+          response_format: { type: "json_object" },
           input: `You are a senior financial journalist writing in the style of the Financial Times.
 
 Write a complete, original, publication-ready financial article from the information provided.
@@ -89,14 +90,22 @@ Rules:
 
       console.log("RAW OPENAI TEXT:", text);
 
-      if (!text) return null;
+      if (!text) {
+  console.error("❌ EMPTY AI RESPONSE");
+  return null;
+}
 
       const cleaned = text
         .replace(/```json/g, "")
         .replace(/```/g, "")
         .trim();
 
-      return JSON.parse(cleaned);
+try {
+  return JSON.parse(cleaned);
+} catch (e) {
+  console.error("❌ JSON PARSE FAILED:", cleaned);
+  return null;
+}
     } catch (err) {
       console.error("❌ OPENAI ERROR:", err);
       return null;
