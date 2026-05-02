@@ -1,9 +1,7 @@
 import { Metadata } from "next";
 import { unstable_cache } from "next/cache";
 
-export const metadata = {
-  metadataBase: new URL("https://www.portfoliomanager.co.uk"),
-};
+
 type PageProps = {
   params: Promise<{ slug: string }>;
   searchParams: Promise<{
