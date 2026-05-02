@@ -104,7 +104,31 @@ const more = articles.slice(7, 20);
         <div className="topbar">
           <div className="topbar-inner">Institutional Financial News & Analysis</div>
         </div>
-
+<div style={{
+ borderTop: "1px solid #ddd",
+borderBottom: "1px solid #ddd",
+  padding: "12px 0",
+  marginBottom: "20px",
+  fontFamily: "Georgia, serif",
+  fontSize: "14px",
+  display: "flex",
+  gap: "20px",
+  justifyContent: "center"
+}}>
+  {["Markets", "Economy", "Companies", "Tech", "Politics"].map((cat) => (
+    <a
+      key={cat}
+      href={`/category/${cat.toLowerCase()}`}
+      style={{
+        textDecoration: "none",
+        color: "#333",
+        fontWeight: 500
+      }}
+    >
+      {cat}
+    </a>
+  ))}
+</div>
         <section className="masthead">
           <div className="logo-mark">PM</div>
           <h1 className="logo-title">Portfolio Manager</h1>
