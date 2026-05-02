@@ -105,7 +105,7 @@ setArticles(newsData.articles?.length ? newsData.articles : fallbackArticles);
     return () => clearInterval(timer);
   }, []);
 
-const mergedArticles = [...articles, ...fallbackArticles];
+const mergedArticles = [...fallbackArticles, ...articles];
 
 const lead = mergedArticles[0];
 const latest = mergedArticles.slice(1, 7);
