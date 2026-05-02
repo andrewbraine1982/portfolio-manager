@@ -57,7 +57,7 @@ const fallbackArticles: Article[] = [
   image:
     "https://images.unsplash.com/photo-1516937941344-00b4e0337589?auto=format&fit=crop&w=1200&q=80",
   source: "Portfolio Manager",
-  url: "/article/why-oil-prices-falling-gas-rising",
+url: "/article/why-oil-prices-are-falling-today-while-gas-prices-rise",
   date: new Date().toISOString(),
 },
   {
