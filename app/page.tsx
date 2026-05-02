@@ -99,7 +99,21 @@ setArticles(newsData.articles?.length ? newsData.articles : fallbackArticles);
 const more = articles.slice(7, 20);
 
   return (
-    <main className="site-shell">
+<main className="site-shell">
+  <section className="market-tape">
+  <div className="ticker-track">
+    {[...markets, ...markets].map((m, i) => (
+      <span key={`${m.symbol}-${i}`}>
+        <b>{label(m.symbol)}</b>{" "}
+        {m.price ? m.price.toLocaleString(undefined, { maximumFractionDigits: 2 }) : "—"}{" "}
+        <em className={m.change >= 0 ? "up" : "down"}>
+          {m.change >= 0 ? "+" : ""}
+          {m.change?.toFixed?.(2) ?? "0.00"}%
+        </em>
+      </span>
+    ))}
+  </div>
+</section>
       <header>
         <div className="topbar">
           <div className="topbar-inner">Institutional Financial News & Analysis</div>
@@ -281,20 +295,7 @@ borderBottom: "1px solid #ddd",
 </header>        
   
 
-      <section className="market-tape">
-        <div className="ticker-track">
-          {[...markets, ...markets].map((m, i) => (
-            <span key={`${m.symbol}-${i}`}>
-              <b>{label(m.symbol)}</b>{" "}
-              {m.price ? m.price.toLocaleString(undefined, { maximumFractionDigits: 2 }) : "—"}{" "}
-              <em className={m.change >= 0 ? "up" : "down"}>
-                {m.change >= 0 ? "+" : ""}
-                {m.change?.toFixed?.(2) ?? "0.00"}%
-              </em>
-            </span>
-          ))}
-        </div>
-      </section>
+
 
       <div className="container">
         <section className="hero-grid">
