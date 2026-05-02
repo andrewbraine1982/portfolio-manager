@@ -94,10 +94,11 @@ setArticles(newsData.articles?.length ? newsData.articles : fallbackArticles);
     return () => clearInterval(timer);
   }, []);
 
-  const lead = articles[0] || fallbackArticles[0];
- const latest = articles.slice(1, 7);
-const more = articles.slice(7, 20);
+const mergedArticles = [...articles, ...fallbackArticles];
 
+const lead = mergedArticles[0];
+const latest = mergedArticles.slice(1, 7);
+const more = mergedArticles.slice(7, 20);
   return (
 <main className="site-shell">
   <section className="market-tape">
